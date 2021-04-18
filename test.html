@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .test {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test"></div>
+    <script>
+        let test = document.querySelector('.test');
+        let startX = 0;
+        let startY = 0;
+        let x = 0;
+        let y = 0;
+        test.addEventListener('touchstart', function(e) {
+            startX = e.touches[0].pageX;
+            startY = e.touches[0].pageY;
+            x = this.offsetLeft;
+            y = this.offsetTop;
+        });
+        test.addEventListener('touchmove', function(e) {
+            test.style.left = e.touches[0].pageX - startX + x + 'px';
+            test.style.top = e.touches[0].pageY - startY + y + 'px';
+
+        });
+    </script>
+</body>
+
+</html>
